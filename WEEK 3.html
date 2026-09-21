@@ -1,0 +1,1122 @@
+```html
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Weekend 3 - Basic Operations</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, "Noto Sans Tamil", sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #306998, #1f4f7a);
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        nav {
+            background: #173b5c;
+            padding: 12px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd43b;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 25px 18px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #306998;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #444;
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+
+        ul {
+            margin-left: 25px;
+        }
+
+        .code-box {
+            background: #1e1e1e;
+            color: #f8f8f2;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        .tip {
+            background: #fff7d6;
+            border-left: 5px solid #f0c000;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .operator-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .operator-table th,
+        .operator-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .operator-table th {
+            background: #306998;
+            color: white;
+        }
+
+        .calculator {
+            background: #eef6ff;
+            border: 2px solid #306998;
+        }
+
+        .calculator input,
+        .calculator select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #306998;
+            color: white;
+            border: none;
+            padding: 13px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #1f4f7a;
+        }
+
+        #calcResult {
+            margin-top: 15px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .question {
+            background: #f4f7fb;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 10px;
+        }
+
+        .question label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+        .score-box {
+            background: #306998;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .correct-answer {
+            background: #e8f8ee;
+            border-left: 6px solid #28a745;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .correct-answer h3 {
+            color: #198754;
+        }
+
+        .wrong-answer {
+            background: #fff0f0;
+            border-left: 6px solid #dc3545;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .wrong-answer h3 {
+            color: #dc3545;
+        }
+
+        .not-answer {
+            background: #fff7d6;
+            border-left: 6px solid #f0c000;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .not-answer h3 {
+            color: #b88600;
+        }
+
+        .review-title {
+            color: #306998;
+            margin-top: 25px;
+        }
+
+        .project {
+            background: #eef6ff;
+            border: 2px solid #306998;
+        }
+
+        footer {
+            background: #173b5c;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .operator-table {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>🐍 Weekend 3</h1>
+
+    <p>
+        Basic Operations – அடிப்படை கணித செயல்பாடுகள்
+    </p>
+
+</header>
+
+
+<nav>
+
+    <a href="#arithmetic">Arithmetic</a>
+
+    <a href="#calculations">Calculations</a>
+
+    <a href="#calculator">Calculator</a>
+
+    <a href="#quiz">Quiz</a>
+
+    <a href="#project">Project</a>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- INTRO -->
+
+<section class="card">
+
+    <h2>🎯 Weekend 3 – என்ன கற்கப் போகிறோம்?</h2>
+
+    <ul>
+
+        <li>➕ கூட்டல்</li>
+
+        <li>➖ கழித்தல்</li>
+
+        <li>✖️ பெருக்கல்</li>
+
+        <li>➗ வகுத்தல்</li>
+
+        <li>📐 Remainder</li>
+
+        <li>🧮 Simple Calculations</li>
+
+    </ul>
+
+</section>
+
+
+<!-- ARITHMETIC -->
+
+<section class="card" id="arithmetic">
+
+    <h2>1️⃣ Arithmetic Operations</h2>
+
+    <p>
+        Python-ல் கணித செயல்பாடுகளை செய்ய
+        Arithmetic Operators பயன்படுத்தப்படுகின்றன.
+    </p>
+
+
+    <table class="operator-table">
+
+        <tr>
+            <th>Operator</th>
+            <th>பெயர்</th>
+            <th>Example</th>
+            <th>Result</th>
+        </tr>
+
+        <tr>
+            <td>+</td>
+            <td>கூட்டல்</td>
+            <td>10 + 5</td>
+            <td>15</td>
+        </tr>
+
+        <tr>
+            <td>-</td>
+            <td>கழித்தல்</td>
+            <td>10 - 5</td>
+            <td>5</td>
+        </tr>
+
+        <tr>
+            <td>*</td>
+            <td>பெருக்கல்</td>
+            <td>10 * 5</td>
+            <td>50</td>
+        </tr>
+
+        <tr>
+            <td>/</td>
+            <td>வகுத்தல்</td>
+            <td>10 / 5</td>
+            <td>2.0</td>
+        </tr>
+
+        <tr>
+            <td>%</td>
+            <td>மீதி</td>
+            <td>10 % 3</td>
+            <td>1</td>
+        </tr>
+
+        <tr>
+            <td>**</td>
+            <td>Power</td>
+            <td>2 ** 3</td>
+            <td>8</td>
+        </tr>
+
+        <tr>
+            <td>//</td>
+            <td>Floor Division</td>
+            <td>10 // 3</td>
+            <td>3</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- ADDITION -->
+
+<section class="card">
+
+    <h2>➕ 2️⃣ கூட்டல்</h2>
+
+    <div class="code-box">a = 10
+b = 20
+
+answer = a + b
+
+print("விடை:", answer)</div>
+
+    <p>
+        Output: <b>30</b>
+    </p>
+
+</section>
+
+
+<!-- SUBTRACTION -->
+
+<section class="card">
+
+    <h2>➖ 3️⃣ கழித்தல்</h2>
+
+    <div class="code-box">a = 50
+b = 20
+
+answer = a - b
+
+print("விடை:", answer)</div>
+
+    <p>
+        Output: <b>30</b>
+    </p>
+
+</section>
+
+
+<!-- MULTIPLICATION -->
+
+<section class="card">
+
+    <h2>✖️ 4️⃣ பெருக்கல்</h2>
+
+    <div class="code-box">a = 10
+b = 5
+
+answer = a * b
+
+print("விடை:", answer)</div>
+
+    <p>
+        Output: <b>50</b>
+    </p>
+
+</section>
+
+
+<!-- DIVISION -->
+
+<section class="card">
+
+    <h2>➗ 5️⃣ வகுத்தல்</h2>
+
+    <div class="code-box">a = 20
+b = 4
+
+answer = a / b
+
+print("விடை:", answer)</div>
+
+    <p>
+        Output: <b>5.0</b>
+    </p>
+
+</section>
+
+
+<!-- SIMPLE CALCULATIONS -->
+
+<section class="card" id="calculations">
+
+    <h2>🧮 6️⃣ Simple Calculations</h2>
+
+
+    <h3>Example 1 – இரண்டு எண்களின் கூட்டல்</h3>
+
+    <div class="code-box">num1 = int(input("முதல் எண்: "))
+num2 = int(input("இரண்டாவது எண்: "))
+
+total = num1 + num2
+
+print("மொத்தம்:", total)</div>
+
+
+    <h3>Example 2 – Rectangle Area</h3>
+
+    <p>
+        Area = Length × Width
+    </p>
+
+    <div class="code-box">length = float(input("நீளம்: "))
+width = float(input("அகலம்: "))
+
+area = length * width
+
+print("பரப்பளவு:", area)</div>
+
+
+    <h3>Example 3 – Average</h3>
+
+    <div class="code-box">a = float(input("முதல் எண்: "))
+b = float(input("இரண்டாவது எண்: "))
+
+average = (a + b) / 2
+
+print("சராசரி:", average)</div>
+
+
+    <h3>Example 4 – Student Marks</h3>
+
+    <div class="code-box">math = int(input("கணிதம்: "))
+science = int(input("அறிவியல்: "))
+ict = int(input("ICT: "))
+
+total = math + science + ict
+
+print("மொத்த மதிப்பெண்:", total)</div>
+
+</section>
+
+
+<!-- CALCULATOR -->
+
+<section class="card calculator" id="calculator">
+
+    <h2>🧮 Interactive Calculator</h2>
+
+    <input
+        type="number"
+        id="num1"
+        placeholder="முதல் எண்"
+    >
+
+    <select id="operator">
+
+        <option value="+">➕ கூட்டல் (+)</option>
+
+        <option value="-">➖ கழித்தல் (-)</option>
+
+        <option value="*">✖️ பெருக்கல் (*)</option>
+
+        <option value="/">➗ வகுத்தல் (/)</option>
+
+        <option value="%">📐 மீதி (%)</option>
+
+    </select>
+
+
+    <input
+        type="number"
+        id="num2"
+        placeholder="இரண்டாவது எண்"
+    >
+
+
+    <button onclick="calculate()">
+        🧮 கணக்கிடு
+    </button>
+
+
+    <div id="calcResult"></div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section class="card" id="quiz">
+
+    <h2>📝 Weekend 3 Quiz</h2>
+
+
+    <!-- Q1 -->
+
+    <div class="question">
+
+        <p>
+            <b>1. Python-ல் கூட்டலுக்கு எந்த operator?</b>
+        </p>
+
+        <label>
+            <input type="radio" name="q1" value="a">
+            -
+        </label>
+
+        <label>
+            <input type="radio" name="q1" value="b">
+            +
+        </label>
+
+        <label>
+            <input type="radio" name="q1" value="c">
+            *
+        </label>
+
+        <label>
+            <input type="radio" name="q1" value="d">
+            /
+        </label>
+
+    </div>
+
+
+    <!-- Q2 -->
+
+    <div class="question">
+
+        <p>
+            <b>2. 10 * 5 இன் விடை என்ன?</b>
+        </p>
+
+        <label>
+            <input type="radio" name="q2" value="a">
+            15
+        </label>
+
+        <label>
+            <input type="radio" name="q2" value="b">
+            50
+        </label>
+
+        <label>
+            <input type="radio" name="q2" value="c">
+            5
+        </label>
+
+        <label>
+            <input type="radio" name="q2" value="d">
+            100
+        </label>
+
+    </div>
+
+
+    <!-- Q3 -->
+
+    <div class="question">
+
+        <p>
+            <b>3. 10 % 3 இன் விடை என்ன?</b>
+        </p>
+
+        <label>
+            <input type="radio" name="q3" value="a">
+            3
+        </label>
+
+        <label>
+            <input type="radio" name="q3" value="b">
+            1
+        </label>
+
+        <label>
+            <input type="radio" name="q3" value="c">
+            0
+        </label>
+
+        <label>
+            <input type="radio" name="q3" value="d">
+            10
+        </label>
+
+    </div>
+
+
+    <!-- Q4 -->
+
+    <div class="question">
+
+        <p>
+            <b>4. Rectangle Area-க்கான formula என்ன?</b>
+        </p>
+
+        <label>
+            <input type="radio" name="q4" value="a">
+            Length + Width
+        </label>
+
+        <label>
+            <input type="radio" name="q4" value="b">
+            Length × Width
+        </label>
+
+        <label>
+            <input type="radio" name="q4" value="c">
+            Length - Width
+        </label>
+
+        <label>
+            <input type="radio" name="q4" value="d">
+            Length ÷ Width
+        </label>
+
+    </div>
+
+
+    <!-- Q5 -->
+
+    <div class="question">
+
+        <p>
+            <b>5. 20 / 4 = ?</b>
+        </p>
+
+        <label>
+            <input type="radio" name="q5" value="a">
+            4
+        </label>
+
+        <label>
+            <input type="radio" name="q5" value="b">
+            5
+        </label>
+
+        <label>
+            <input type="radio" name="q5" value="c">
+            6
+        </label>
+
+        <label>
+            <input type="radio" name="q5" value="d">
+            10
+        </label>
+
+    </div>
+
+
+    <button onclick="checkQuiz()">
+        ✅ Quiz Submit செய்து Result பார்க்க
+    </button>
+
+
+    <div id="quizResult"></div>
+
+</section>
+
+
+<!-- PROJECT -->
+
+<section class="card project" id="project">
+
+    <h2>🏆 Mini Project – Student Marks Calculator</h2>
+
+    <p>
+        3 பாடங்களின் மதிப்பெண்களை input மூலம் பெற்று
+        மொத்தம் மற்றும் சராசரியை கணக்கிடுங்கள்.
+    </p>
+
+
+    <div class="code-box">math = float(input("கணிதம்: "))
+science = float(input("அறிவியல்: "))
+ict = float(input("ICT: "))
+
+total = math + science + ict
+
+average = total / 3
+
+print("மொத்த மதிப்பெண்:", total)
+print("சராசரி:", average)</div>
+
+
+    <div class="tip">
+        🚀 Challenge:
+        English மற்றும் Tamil மதிப்பெண்களையும் சேர்த்து
+        5 பாடங்களின் மொத்தம் மற்றும் சராசரியை கணக்கிடுங்கள்.
+    </div>
+
+</section>
+
+
+</div>
+
+
+<footer>
+
+    <p>🐍 Python Learning – Weekend 3</p>
+
+    <p>Learn • Practice • Calculate • Build 🚀</p>
+
+</footer>
+
+
+<script>
+
+
+/* ================= CALCULATOR ================= */
+
+function calculate() {
+
+    let num1 =
+        parseFloat(document.getElementById("num1").value);
+
+    let num2 =
+        parseFloat(document.getElementById("num2").value);
+
+    let operator =
+        document.getElementById("operator").value;
+
+    let result;
+
+
+    if (isNaN(num1) || isNaN(num2)) {
+
+        document.getElementById("calcResult").innerHTML =
+            "⚠️ இரண்டு எண்களையும் உள்ளிடுங்கள்.";
+
+        return;
+    }
+
+
+    if (operator === "+") {
+
+        result = num1 + num2;
+
+    }
+
+    else if (operator === "-") {
+
+        result = num1 - num2;
+
+    }
+
+    else if (operator === "*") {
+
+        result = num1 * num2;
+
+    }
+
+    else if (operator === "/") {
+
+        if (num2 === 0) {
+
+            document.getElementById("calcResult").innerHTML =
+                "❌ 0-ஆல் வகுக்க முடியாது.";
+
+            return;
+        }
+
+        result = num1 / num2;
+
+    }
+
+    else if (operator === "%") {
+
+        if (num2 === 0) {
+
+            document.getElementById("calcResult").innerHTML =
+                "❌ 0-ஆல் remainder கணக்கிட முடியாது.";
+
+            return;
+        }
+
+        result = num1 % num2;
+
+    }
+
+
+    document.getElementById("calcResult").innerHTML =
+        "🎯 விடை: " + result;
+
+}
+
+
+/* ================= QUIZ ================= */
+
+function checkQuiz() {
+
+
+    const answers = {
+
+        q1: "b",
+
+        q2: "b",
+
+        q3: "b",
+
+        q4: "b",
+
+        q5: "b"
+
+    };
+
+
+    const questions = {
+
+        q1: "Python-ல் கூட்டலுக்கு எந்த operator?",
+
+        q2: "10 * 5 இன் விடை என்ன?",
+
+        q3: "10 % 3 இன் விடை என்ன?",
+
+        q4: "Rectangle Area-க்கான formula என்ன?",
+
+        q5: "20 / 4 = ?"
+
+    };
+
+
+    const correctAnswers = {
+
+        q1: "+",
+
+        q2: "50",
+
+        q3: "1",
+
+        q4: "Length × Width",
+
+        q5: "5"
+
+    };
+
+
+    let score = 0;
+
+    let review = "";
+
+
+    for (let i = 1; i <= 5; i++) {
+
+
+        let q = "q" + i;
+
+
+        let selected = document.querySelector(
+            'input[name="' + q + '"]:checked'
+        );
+
+
+        /* NO ANSWER */
+
+        if (!selected) {
+
+            review += `
+
+                <div class="not-answer">
+
+                    <h3>
+                        ⚠️ கேள்வி ${i} – பதில் இல்லை
+                    </h3>
+
+                    <p>
+                        <b>கேள்வி:</b>
+                        ${questions[q]}
+                    </p>
+
+                    <p>
+                        <b>✅ சரியான பதில்:</b>
+                        ${correctAnswers[q]}
+                    </p>
+
+                </div>
+
+            `;
+
+            continue;
+
+        }
+
+
+        let selectedText =
+            selected.parentElement.textContent.trim();
+
+
+        /* CORRECT */
+
+        if (selected.value === answers[q]) {
+
+            score++;
+
+
+            review += `
+
+                <div class="correct-answer">
+
+                    <h3>
+                        ✅ கேள்வி ${i} – சரி!
+                    </h3>
+
+                    <p>
+                        <b>கேள்வி:</b>
+                        ${questions[q]}
+                    </p>
+
+                    <p>
+                        <b>👤 உங்கள் பதில்:</b>
+                        ${selectedText}
+                    </p>
+
+                    <p>
+                        <b>✔️ சரியான பதில்:</b>
+                        ${correctAnswers[q]}
+                    </p>
+
+                    <p>
+                        🎉 அருமை! உங்கள் பதில் சரியானது.
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* WRONG */
+
+        else {
+
+            review += `
+
+                <div class="wrong-answer">
+
+                    <h3>
+                        ❌ கேள்வி ${i} – தவறு!
+                    </h3>
+
+                    <p>
+                        <b>கேள்வி:</b>
+                        ${questions[q]}
+                    </p>
+
+                    <p>
+                        <b>👤 உங்கள் பதில்:</b>
+                        ${selectedText}
+                    </p>
+
+                    <p>
+                        <b>✔️ சரியான பதில்:</b>
+                        ${correctAnswers[q]}
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+
+    let message;
+
+
+    if (score === 5) {
+
+        message =
+            "🏆 Excellent! அனைத்து கேள்விகளும் சரி!";
+
+    }
+
+    else if (score >= 3) {
+
+        message =
+            "👍 நல்ல முயற்சி! இன்னும் கொஞ்சம் practice செய்யுங்கள்.";
+
+    }
+
+    else {
+
+        message =
+            "📚 Lesson-ஐ மீண்டும் படித்து Quiz-ஐ முயற்சி செய்யுங்கள்.";
+
+    }
+
+
+    document.getElementById("quizResult").innerHTML = `
+
+        <div class="score-box">
+
+            🎯 உங்கள் மதிப்பெண்: ${score} / 5
+
+            <br><br>
+
+            ${message}
+
+        </div>
+
+
+        <h2 class="review-title">
+            📋 Quiz Preview / Review
+        </h2>
+
+
+        ${review}
+
+    `;
+
+
+    document.getElementById("quizResult").scrollIntoView({
+
+        behavior: "smooth"
+
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+```

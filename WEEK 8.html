@@ -1,0 +1,1903 @@
+
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weekend 8 - Mini Python Project</title>
+
+
+    <!-- ================= INTERNAL CSS ================= -->
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: Arial, "Noto Sans Tamil", sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: linear-gradient(135deg, #306998, #1f4f7a);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+
+        header p {
+            font-size: 19px;
+        }
+
+
+        /* ================= NAV ================= */
+
+        nav {
+            background: #173b5c;
+            padding: 13px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 9px;
+            font-weight: bold;
+        }
+
+
+        nav a:hover {
+            color: #ffd43b;
+        }
+
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 25px 18px;
+        }
+
+
+        /* ================= CARD ================= */
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+
+        h2 {
+            color: #306998;
+            margin-bottom: 15px;
+        }
+
+
+        h3 {
+            color: #444;
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+
+
+        ul {
+            margin-left: 25px;
+        }
+
+
+        /* ================= CODE ================= */
+
+        .code-box {
+            background: #1e1e1e;
+            color: #f8f8f2;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+
+        /* ================= TIP ================= */
+
+        .tip {
+            background: #fff7d6;
+            border-left: 5px solid #f0c000;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+
+        /* ================= PROJECT ================= */
+
+        .project {
+            background: #eef6ff;
+            border: 2px solid #306998;
+        }
+
+
+        /* ================= REVISION ================= */
+
+        .revision {
+            background: #f5f0ff;
+            border: 2px solid #7952b3;
+        }
+
+
+        /* ================= INFO ================= */
+
+        .info {
+            background: #f8f9fa;
+            border-left: 5px solid #306998;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+
+        /* ================= SUCCESS ================= */
+
+        .success {
+            background: #e8f8ee;
+            border-left: 5px solid #28a745;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+
+        /* ================= INPUT ================= */
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+
+        /* ================= BUTTON ================= */
+
+        button {
+            background: #306998;
+            color: white;
+            border: none;
+            padding: 13px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+
+        button:hover {
+            background: #1f4f7a;
+        }
+
+
+        /* ================= OUTPUT ================= */
+
+        .output {
+            background: #1e1e1e;
+            color: white;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 15px;
+            min-height: 50px;
+            white-space: pre-wrap;
+        }
+
+
+        /* ================= QUIZ ================= */
+
+        .question {
+            background: #f4f7fb;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 10px;
+        }
+
+
+        .question label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+
+        /* ================= SCORE ================= */
+
+        .score-box {
+            background: #306998;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+
+        /* ================= CORRECT ================= */
+
+        .correct-answer {
+            background: #e8f8ee;
+            border-left: 6px solid #28a745;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+
+        .correct-answer h3 {
+            color: #198754;
+        }
+
+
+        /* ================= WRONG ================= */
+
+        .wrong-answer {
+            background: #fff0f0;
+            border-left: 6px solid #dc3545;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+
+        .wrong-answer h3 {
+            color: #dc3545;
+        }
+
+
+        /* ================= NOT ANSWERED ================= */
+
+        .not-answer {
+            background: #fff7d6;
+            border-left: 6px solid #f0c000;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+
+        .not-answer h3 {
+            color: #b88600;
+        }
+
+
+        /* ================= CERTIFICATE ================= */
+
+        .certificate {
+            text-align: center;
+            background: linear-gradient(135deg, #fffdf2, #f8f0d0);
+            border: 5px solid #306998;
+            padding: 40px 25px;
+            border-radius: 15px;
+        }
+
+
+        .certificate h1 {
+            color: #306998;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+
+        .certificate .cert-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+
+        .certificate .cert-name {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #173b5c;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 28px;
+            }
+
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+
+            .container {
+                padding: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <h1>🐍 Weekend 8</h1>
+
+    <p>
+        Mini Python Project & Course Wrap-up
+    </p>
+
+</header>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <a href="#project">Project</a>
+
+    <a href="#calculator">Calculator</a>
+
+    <a href="#marks">Marks</a>
+
+    <a href="#revision">Revision</a>
+
+    <a href="#outcome">Outcome</a>
+
+    <a href="#requirements">Requirements</a>
+
+    <a href="#funding">Fees</a>
+
+    <a href="#certificate">Certificate</a>
+
+    <a href="#quiz">Quiz</a>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- =====================================================
+     WEEKEND 8 INTRO
+===================================================== -->
+
+<section class="card">
+
+    <h2>🎯 Weekend 8 – Final Weekend</h2>
+
+    <p>
+        இது Python course-ன் final weekend.
+        கடந்த 7 வாரங்களில் கற்ற Python concepts அனைத்தையும்
+        பயன்படுத்தி ஒரு Mini Project உருவாக்கப் போகிறோம்.
+    </p>
+
+
+    <br>
+
+
+    <ul>
+
+        <li>🔹 Calculator Project</li>
+
+        <li>🔹 Student Marks System</li>
+
+        <li>🔹 Revision</li>
+
+        <li>🔹 Problem Solving</li>
+
+        <li>🔹 Debugging</li>
+
+        <li>🔹 Final Quiz</li>
+
+        <li>🔹 Course Wrap-up</li>
+
+    </ul>
+
+
+    <div class="success">
+
+        🎉 <b>Goal:</b>
+
+        <br>
+
+        Course முடிவில் நீங்கள் Python-ல்
+        simple programs-ஐ நீங்களே எழுதக்கூடியவராக இருக்க வேண்டும்.
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROJECT
+===================================================== -->
+
+<section class="card project" id="project">
+
+    <h2>🚀 Mini Python Project</h2>
+
+
+    <p>
+        இன்றைய முக்கியமான task:
+        இதுவரை கற்ற concepts-ஐ பயன்படுத்தி
+        ஒரு முழுமையான Python program உருவாக்குதல்.
+    </p>
+
+
+    <h3>Project Options</h3>
+
+
+    <ul>
+
+        <li>🧮 Calculator</li>
+
+        <li>🎓 Student Marks System</li>
+
+    </ul>
+
+
+    <div class="tip">
+
+        💡 இரண்டு projects-லிருந்தும் ஒன்றை
+        உங்கள் final project ஆக தேர்வு செய்யலாம்.
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CALCULATOR
+===================================================== -->
+
+<section class="card" id="calculator">
+
+    <h2>🧮 Project 1 – Python Calculator</h2>
+
+
+    <p>
+        இரண்டு numbers மற்றும் ஒரு operation-ஐ input ஆக பெற்று
+        calculation செய்யும் calculator.
+    </p>
+
+
+    <h3>💻 Python Code</h3>
+
+
+    <div class="code-box">print("===== PYTHON CALCULATOR =====")
+
+print()
+
+num1 = float(input("முதல் எண்: "))
+
+num2 = float(input("இரண்டாவது எண்: "))
+
+
+print()
+
+print("1 - கூட்டல்")
+
+print("2 - கழித்தல்")
+
+print("3 - பெருக்கல்")
+
+print("4 - வகுத்தல்")
+
+
+choice = input("Operation தேர்வு செய்யவும்: ")
+
+
+if choice == "1":
+
+    result = num1 + num2
+
+    print("Result:", result)
+
+
+elif choice == "2":
+
+    result = num1 - num2
+
+    print("Result:", result)
+
+
+elif choice == "3":
+
+    result = num1 * num2
+
+    print("Result:", result)
+
+
+elif choice == "4":
+
+    if num2 != 0:
+
+        result = num1 / num2
+
+        print("Result:", result)
+
+    else:
+
+        print("0-ஆல் வகுக்க முடியாது.")
+
+
+else:
+
+    print("தவறான தேர்வு.")</div>
+
+
+    <div class="tip">
+
+        📚 இந்த project-ல் பயன்படுத்தப்படும் concepts:
+
+        <br><br>
+
+        <b>
+            Variables + Input + Numbers + If/Else
+            + Arithmetic Operations
+        </b>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MARKS SYSTEM
+===================================================== -->
+
+<section class="card project" id="marks">
+
+    <h2>🎓 Project 2 – Student Marks System</h2>
+
+
+    <p>
+        மாணவரின் பெயர் மற்றும் marks-ஐ பெற்று
+        Total, Average மற்றும் Pass/Fail result
+        காட்டும் Python program.
+    </p>
+
+
+    <h3>💻 Python Code</h3>
+
+
+    <div class="code-box">print("===== STUDENT MARKS SYSTEM =====")
+
+print()
+
+
+name = input("மாணவர் பெயர்: ")
+
+
+marks = []
+
+
+for i in range(5):
+
+    mark = float(
+        input("Subject " + str(i + 1) + " mark: ")
+    )
+
+    marks.append(mark)
+
+
+total = 0
+
+
+for mark in marks:
+
+    total = total + mark
+
+
+average = total / len(marks)
+
+
+print()
+
+print("===== RESULT =====")
+
+print("Student:", name)
+
+print("Total:", total)
+
+print("Average:", average)
+
+
+if average >= 40:
+
+    print("Result: PASS")
+
+else:
+
+    print("Result: FAIL")</div>
+
+
+    <div class="tip">
+
+        📚 இந்த project-ல் பயன்படுத்தப்படும் concepts:
+
+        <br><br>
+
+        <b>
+            Variables + Input + Lists + For Loop
+            + If/Else + Arithmetic
+        </b>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     REVISION
+===================================================== -->
+
+<section class="card revision" id="revision">
+
+    <h2>🔄 Revision – Week 1 to Week 7</h2>
+
+
+    <h3>📘 Week 1 – Computer & Python Setup</h3>
+
+    <ul>
+
+        <li>Computer basics</li>
+
+        <li>Keyboard & Mouse</li>
+
+        <li>Files & Folders</li>
+
+        <li>Python installation</li>
+
+        <li>VS Code</li>
+
+        <li>First Python program</li>
+
+    </ul>
+
+
+    <h3>🐍 Week 2 – Python Basics</h3>
+
+    <ul>
+
+        <li>Variables</li>
+
+        <li>Numbers</li>
+
+        <li>Strings</li>
+
+        <li>Input</li>
+
+        <li>Output</li>
+
+    </ul>
+
+
+    <h3>➕ Week 3 – Basic Operations</h3>
+
+    <ul>
+
+        <li>Addition</li>
+
+        <li>Subtraction</li>
+
+        <li>Multiplication</li>
+
+        <li>Division</li>
+
+        <li>Simple calculations</li>
+
+    </ul>
+
+
+    <h3>🔀 Week 4 – Conditions</h3>
+
+    <ul>
+
+        <li>if</li>
+
+        <li>else</li>
+
+        <li>Pass / Fail</li>
+
+        <li>Decision making</li>
+
+    </ul>
+
+
+    <h3>🔁 Week 5 – Loops</h3>
+
+    <ul>
+
+        <li>for loop</li>
+
+        <li>Repeating actions</li>
+
+        <li>range()</li>
+
+    </ul>
+
+
+    <h3>📋 Week 6 – Lists</h3>
+
+    <ul>
+
+        <li>Creating Lists</li>
+
+        <li>Adding items</li>
+
+        <li>append()</li>
+
+        <li>Reading items</li>
+
+        <li>List + Loop</li>
+
+    </ul>
+
+
+    <h3>🧠 Week 7 – Problem Solving</h3>
+
+    <ul>
+
+        <li>Combining concepts</li>
+
+        <li>Problem solving</li>
+
+        <li>Debugging</li>
+
+        <li>Finding errors</li>
+
+        <li>Fixing errors</li>
+
+    </ul>
+
+</section>
+
+
+<!-- =====================================================
+     INTERACTIVE CALCULATOR
+===================================================== -->
+
+<section class="card">
+
+    <h2>▶️ Interactive Calculator</h2>
+
+
+    <input
+        type="number"
+        id="calcA"
+        placeholder="முதல் எண்"
+    >
+
+
+    <input
+        type="number"
+        id="calcB"
+        placeholder="இரண்டாவது எண்"
+    >
+
+
+    <select id="operation">
+
+        <option value="+">➕ கூட்டல்</option>
+
+        <option value="-">➖ கழித்தல்</option>
+
+        <option value="*">✖️ பெருக்கல்</option>
+
+        <option value="/">➗ வகுத்தல்</option>
+
+    </select>
+
+
+    <button onclick="calculate()">
+
+        🧮 Calculate
+
+    </button>
+
+
+    <div
+        class="output"
+        id="calculatorOutput"
+    ></div>
+
+</section>
+
+
+<!-- =====================================================
+     LEARNING OUTCOME
+===================================================== -->
+
+<section class="card" id="outcome">
+
+    <h2>🎯 Learning Outcome</h2>
+
+
+    <p>
+        இந்த course-ஐ வெற்றிகரமாக முடித்த பிறகு
+        மாணவர்கள்:
+    </p>
+
+
+    <br>
+
+
+    <ul>
+
+        <li>
+            💻 <b>Use a computer confidently</b>
+            <br>
+            கணினியை நம்பிக்கையுடன் பயன்படுத்த முடியும்.
+        </li>
+
+
+        <li>
+            🐍 <b>Install and run Python</b>
+            <br>
+            Python-ஐ install செய்து run செய்ய முடியும்.
+        </li>
+
+
+        <li>
+            💻 <b>Write simple programs</b>
+            <br>
+            Simple Python programs எழுத முடியும்.
+        </li>
+
+
+        <li>
+            🧠 <b>Solve basic problems with code</b>
+            <br>
+            Code பயன்படுத்தி அடிப்படை பிரச்சினைகளை
+            தீர்க்க முடியும்.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- =====================================================
+     ENTRY REQUIREMENTS
+===================================================== -->
+
+<section class="card" id="requirements">
+
+    <h2>📋 Entry Requirements</h2>
+
+
+    <ul>
+
+        <li>
+            📍 Open to all Trincomalee students
+        </li>
+
+
+        <li>
+            🎓 No prior experience required
+        </li>
+
+
+        <li>
+            📖 Basic English reading ability
+        </li>
+
+
+        <li>
+            💻 A computer with internet access
+        </li>
+
+    </ul>
+
+
+    <div class="info">
+
+        ℹ️ <b>முன் Python அனுபவம் தேவையில்லை.</b>
+
+        <br><br>
+
+        Python-ஐ ஆரம்பத்திலிருந்து
+        படிப்படியாக கற்றுக்கொள்ளும் வகையில்
+        இந்த course அமைக்கப்பட்டுள்ளது.
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FEES AND FUNDING
+===================================================== -->
+
+<section class="card" id="funding">
+
+    <h2>💰 Fees and Funding</h2>
+
+
+    <div class="success">
+
+        <h3>
+            🎉 100% FREE
+        </h3>
+
+
+        <p>
+
+            இந்த course முழுமையாக sponsored செய்யப்படுகிறது.
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            <b>
+                TrincoITHub
+            </b>
+
+            மற்றும்
+
+            <b>
+                Kenwyn Consultancy Services
+            </b>
+
+            ஆகியவற்றின் sponsorship மூலம்
+            மாணவர்களுக்கு இந்த training வழங்கப்படுகிறது.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CERTIFICATION
+===================================================== -->
+
+<section class="card" id="certificate">
+
+    <h2>🏆 Certification</h2>
+
+
+    <p>
+        Course-ஐ வெற்றிகரமாக முடிக்கும்
+        participants-க்கு certificate வழங்கப்படும்.
+    </p>
+
+
+    <br>
+
+
+    <div class="certificate">
+
+        <h1>
+            🏆 CERTIFICATE
+        </h1>
+
+
+        <p>
+            This certificate is awarded upon
+            successful completion of the course
+        </p>
+
+
+        <div class="cert-title">
+
+            Computing Fundamentals with Python
+
+        </div>
+
+
+        <p>
+
+            Certificate வழங்குவது:
+
+        </p>
+
+
+        <div class="cert-name">
+
+            TrincoITHub
+
+        </div>
+
+
+        <p>
+
+            Sponsored by
+
+        </p>
+
+
+        <p>
+
+            <b>
+                TrincoITHub
+            </b>
+
+            &
+
+            <b>
+                Kenwyn Consultancy Services
+            </b>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL QUIZ
+===================================================== -->
+
+<section class="card" id="quiz">
+
+    <h2>📝 Final Revision Quiz</h2>
+
+
+    <!-- Q1 -->
+
+    <div class="question">
+
+        <p>
+            <b>
+                1. Python-ல் பல values-ஐ சேமிக்க எதை பயன்படுத்தலாம்?
+            </b>
+        </p>
+
+
+        <label>
+            <input type="radio" name="q1" value="a">
+            List
+        </label>
+
+
+        <label>
+            <input type="radio" name="q1" value="b">
+            Mouse
+        </label>
+
+
+        <label>
+            <input type="radio" name="q1" value="c">
+            Keyboard
+        </label>
+
+
+        <label>
+            <input type="radio" name="q1" value="d">
+            Monitor
+        </label>
+
+    </div>
+
+
+    <!-- Q2 -->
+
+    <div class="question">
+
+        <p>
+            <b>
+                2. Condition எழுத Python-ல் எதை பயன்படுத்துகிறோம்?
+            </b>
+        </p>
+
+
+        <label>
+            <input type="radio" name="q2" value="a">
+            if / else
+        </label>
+
+
+        <label>
+            <input type="radio" name="q2" value="b">
+            append()
+        </label>
+
+
+        <label>
+            <input type="radio" name="q2" value="c">
+            print()
+        </label>
+
+
+        <label>
+            <input type="radio" name="q2" value="d">
+            range()
+        </label>
+
+    </div>
+
+
+    <!-- Q3 -->
+
+    <div class="question">
+
+        <p>
+            <b>
+                3. Repeating actions செய்ய எது பயன்படும்?
+            </b>
+        </p>
+
+
+        <label>
+            <input type="radio" name="q3" value="a">
+            for loop
+        </label>
+
+
+        <label>
+            <input type="radio" name="q3" value="b">
+            input()
+        </label>
+
+
+        <label>
+            <input type="radio" name="q3" value="c">
+            string
+        </label>
+
+
+        <label>
+            <input type="radio" name="q3" value="d">
+            variable
+        </label>
+
+    </div>
+
+
+    <!-- Q4 -->
+
+    <div class="question">
+
+        <p>
+            <b>
+                4. List-ன் முடிவில் item சேர்க்க எது பயன்படும்?
+            </b>
+        </p>
+
+
+        <label>
+            <input type="radio" name="q4" value="a">
+            append()
+        </label>
+
+
+        <label>
+            <input type="radio" name="q4" value="b">
+            addItem()
+        </label>
+
+
+        <label>
+            <input type="radio" name="q4" value="c">
+            push()
+        </label>
+
+
+        <label>
+            <input type="radio" name="q4" value="d">
+            insertNew()
+        </label>
+
+    </div>
+
+
+    <!-- Q5 -->
+
+    <div class="question">
+
+        <p>
+            <b>
+                5. Code-ல் உள்ள தவறை கண்டுபிடித்து சரி செய்வது?
+            </b>
+        </p>
+
+
+        <label>
+            <input type="radio" name="q5" value="a">
+            Debugging
+        </label>
+
+
+        <label>
+            <input type="radio" name="q5" value="b">
+            Printing
+        </label>
+
+
+        <label>
+            <input type="radio" name="q5" value="c">
+            Input
+        </label>
+
+
+        <label>
+            <input type="radio" name="q5" value="d">
+            Loop
+        </label>
+
+    </div>
+
+
+    <!-- Q6 -->
+
+    <div class="question">
+
+        <p>
+            <b>
+                6. Python program-ஐ எழுத பயன்படுத்தக்கூடிய editor?
+            </b>
+        </p>
+
+
+        <label>
+            <input type="radio" name="q6" value="a">
+            VS Code
+        </label>
+
+
+        <label>
+            <input type="radio" name="q6" value="b">
+            Calculator
+        </label>
+
+
+        <label>
+            <input type="radio" name="q6" value="c">
+            Paint
+        </label>
+
+
+        <label>
+            <input type="radio" name="q6" value="d">
+            Camera
+        </label>
+
+    </div>
+
+
+    <!-- Q7 -->
+
+    <div class="question">
+
+        <p>
+            <b>
+                7. Python-ல் user-இடமிருந்து data பெற?
+            </b>
+        </p>
+
+
+        <label>
+            <input type="radio" name="q7" value="a">
+            input()
+        </label>
+
+
+        <label>
+            <input type="radio" name="q7" value="b">
+            output()
+        </label>
+
+
+        <label>
+            <input type="radio" name="q7" value="c">
+            getData()
+        </label>
+
+
+        <label>
+            <input type="radio" name="q7" value="d">
+            readData()
+        </label>
+
+    </div>
+
+
+    <!-- Q8 -->
+
+    <div class="question">
+
+        <p>
+            <b>
+                8. Calculator project-ல்
+                5 + 3 இன் result என்ன?
+            </b>
+        </p>
+
+
+        <label>
+            <input type="radio" name="q8" value="a">
+            2
+        </label>
+
+
+        <label>
+            <input type="radio" name="q8" value="b">
+            8
+        </label>
+
+
+        <label>
+            <input type="radio" name="q8" value="c">
+            15
+        </label>
+
+
+        <label>
+            <input type="radio" name="q8" value="d">
+            53
+        </label>
+
+    </div>
+
+
+    <button onclick="checkQuiz()">
+
+        ✅ Final Quiz Submit
+
+    </button>
+
+
+    <div id="quizResult"></div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL MESSAGE
+===================================================== -->
+
+<section class="card">
+
+    <h2>🎉 Course Wrap-up</h2>
+
+
+    <div class="success">
+
+        <p>
+            நீங்கள் இப்போது:
+        </p>
+
+
+        <br>
+
+
+        <ul>
+
+            <li>💻 Computer-ஐ பயன்படுத்த முடியும்</li>
+
+            <li>🐍 Python install & run செய்ய முடியும்</li>
+
+            <li>⌨️ Simple Python programs எழுத முடியும்</li>
+
+            <li>🧮 Calculations செய்ய முடியும்</li>
+
+            <li>🔀 Conditions பயன்படுத்த முடியும்</li>
+
+            <li>🔁 Loops பயன்படுத்த முடியும்</li>
+
+            <li>📋 Lists பயன்படுத்த முடியும்</li>
+
+            <li>🐛 Basic debugging செய்ய முடியும்</li>
+
+            <li>🧠 Basic problems-ஐ code மூலம் solve செய்ய முடியும்</li>
+
+        </ul>
+
+
+        <br>
+
+
+        <h3>
+
+            🚀 Keep Learning. Keep Building.
+
+        </h3>
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h3>
+        🐍 Computing Fundamentals with Python
+    </h3>
+
+
+    <p>
+        TrincoITHub
+    </p>
+
+
+    <p>
+        Fully Sponsored by
+        TrincoITHub & Kenwyn Consultancy Services
+    </p>
+
+
+    <br>
+
+
+    <p>
+        © 2026 TrincoITHub
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     INTERNAL JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   CALCULATOR
+===================================================== */
+
+function calculate() {
+
+
+    let a =
+        document.getElementById("calcA").value;
+
+
+    let b =
+        document.getElementById("calcB").value;
+
+
+    let operation =
+        document.getElementById("operation").value;
+
+
+    if (a === "" || b === "") {
+
+        document.getElementById("calculatorOutput").textContent =
+            "⚠️ இரண்டு numbers-ஐயும் உள்ளிடுங்கள்.";
+
+        return;
+
+    }
+
+
+    a = Number(a);
+
+    b = Number(b);
+
+
+    let result;
+
+
+    if (operation === "+") {
+
+        result = a + b;
+
+    }
+
+
+    else if (operation === "-") {
+
+        result = a - b;
+
+    }
+
+
+    else if (operation === "*") {
+
+        result = a * b;
+
+    }
+
+
+    else if (operation === "/") {
+
+
+        if (b === 0) {
+
+            document.getElementById("calculatorOutput").textContent =
+                "❌ 0-ஆல் வகுக்க முடியாது.";
+
+            return;
+
+        }
+
+
+        result = a / b;
+
+    }
+
+
+    document.getElementById("calculatorOutput").textContent =
+
+        "🔢 முதல் எண்: " + a +
+
+        "\n🔢 இரண்டாவது எண்: " + b +
+
+        "\n⚙️ Operation: " + operation +
+
+        "\n\n✅ Result: " + result;
+
+}
+
+
+/* =====================================================
+   FINAL QUIZ
+===================================================== */
+
+function checkQuiz() {
+
+
+    const answers = {
+
+        q1: "a",
+
+        q2: "a",
+
+        q3: "a",
+
+        q4: "a",
+
+        q5: "a",
+
+        q6: "a",
+
+        q7: "a",
+
+        q8: "b"
+
+    };
+
+
+    const questions = {
+
+        q1:
+            "Python-ல் பல values-ஐ சேமிக்க எதை பயன்படுத்தலாம்?",
+
+        q2:
+            "Condition எழுத Python-ல் எதை பயன்படுத்துகிறோம்?",
+
+        q3:
+            "Repeating actions செய்ய எது பயன்படும்?",
+
+        q4:
+            "List-ன் முடிவில் item சேர்க்க எது பயன்படும்?",
+
+        q5:
+            "Code-ல் உள்ள தவறை கண்டுபிடித்து சரி செய்வது?",
+
+        q6:
+            "Python program-ஐ எழுத பயன்படுத்தக்கூடிய editor?",
+
+        q7:
+            "Python-ல் user-இடமிருந்து data பெற?",
+
+        q8:
+            "Calculator project-ல் 5 + 3 இன் result என்ன?"
+
+    };
+
+
+    const correctAnswers = {
+
+        q1: "List",
+
+        q2: "if / else",
+
+        q3: "for loop",
+
+        q4: "append()",
+
+        q5: "Debugging",
+
+        q6: "VS Code",
+
+        q7: "input()",
+
+        q8: "8"
+
+    };
+
+
+    let score = 0;
+
+    let review = "";
+
+
+    for (let i = 1; i <= 8; i++) {
+
+
+        let q = "q" + i;
+
+
+        let selected = document.querySelector(
+            'input[name="' + q + '"]:checked'
+        );
+
+
+        /* ================= NOT ANSWERED ================= */
+
+        if (!selected) {
+
+            review += `
+
+                <div class="not-answer">
+
+                    <h3>
+                        ⚠️ கேள்வி ${i} – பதில் தேர்வு செய்யவில்லை
+                    </h3>
+
+                    <p>
+
+                        <b>கேள்வி:</b>
+                        ${questions[q]}
+
+                    </p>
+
+                    <p>
+
+                        <b>✔️ சரியான பதில்:</b>
+                        ${correctAnswers[q]}
+
+                    </p>
+
+                </div>
+
+            `;
+
+            continue;
+
+        }
+
+
+        let selectedText =
+            selected.parentElement.textContent.trim();
+
+
+        /* ================= CORRECT ================= */
+
+        if (selected.value === answers[q]) {
+
+
+            score++;
+
+
+            review += `
+
+                <div class="correct-answer">
+
+                    <h3>
+                        ✅ கேள்வி ${i} – சரி!
+                    </h3>
+
+
+                    <p>
+
+                        <b>கேள்வி:</b>
+                        ${questions[q]}
+
+                    </p>
+
+
+                    <p>
+
+                        <b>👤 உங்கள் பதில்:</b>
+                        ${selectedText}
+
+                    </p>
+
+
+                    <p>
+
+                        <b>✔️ சரியான பதில்:</b>
+                        ${correctAnswers[q]}
+
+                    </p>
+
+
+                    <p>
+
+                        🎉 சரியான பதில்!
+
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* ================= WRONG ================= */
+
+        else {
+
+
+            review += `
+
+                <div class="wrong-answer">
+
+                    <h3>
+                        ❌ கேள்வி ${i} – தவறு!
+                    </h3>
+
+
+                    <p>
+
+                        <b>கேள்வி:</b>
+                        ${questions[q]}
+
+                    </p>
+
+
+                    <p>
+
+                        <b>👤 உங்கள் பதில்:</b>
+                        ${selectedText}
+
+                    </p>
+
+
+                    <p>
+
+                        <b>✔️ சரியான பதில்:</b>
+                        ${correctAnswers[q]}
+
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+
+    /* ================= MESSAGE ================= */
+
+    let message;
+
+
+    if (score === 8) {
+
+        message =
+            "🏆 Excellent! Final Quiz-ல் முழு மதிப்பெண்!";
+
+    }
+
+    else if (score >= 6) {
+
+        message =
+            "🎉 Very Good! Python basics நன்றாக புரிந்துள்ளது.";
+
+    }
+
+    else if (score >= 4) {
+
+        message =
+            "👍 Good! இன்னும் கொஞ்சம் revision செய்யுங்கள்.";
+
+    }
+
+    else {
+
+        message =
+            "📚 Week 1–7 lessons-ஐ மீண்டும் revise செய்யுங்கள்.";
+
+    }
+
+
+    /* ================= RESULT ================= */
+
+    document.getElementById("quizResult").innerHTML = `
+
+        <div class="score-box">
+
+            🎯 Final Score: ${score} / 8
+
+            <br><br>
+
+            ${message}
+
+        </div>
+
+
+        <h2>
+
+            📋 Quiz Preview / Review
+
+        </h2>
+
+
+        ${review}
+
+    `;
+
+
+    document.getElementById("quizResult").scrollIntoView({
+
+        behavior: "smooth"
+
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+```
