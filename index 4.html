@@ -1,0 +1,1121 @@
+
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Weekend 4 - Python Conditions</title>
+
+
+    <!-- ================= INTERNAL CSS ================= -->
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, "Noto Sans Tamil", sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+
+        /* HEADER */
+
+        header {
+            background: linear-gradient(135deg, #306998, #1f4f7a);
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+
+        /* NAVIGATION */
+
+        nav {
+            background: #173b5c;
+            padding: 12px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd43b;
+        }
+
+
+        /* CONTAINER */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 25px 18px;
+        }
+
+
+        /* CARD */
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+
+        h2 {
+            color: #306998;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #444;
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+
+
+        ul {
+            margin-left: 25px;
+        }
+
+
+        /* CODE */
+
+        .code-box {
+            background: #1e1e1e;
+            color: #f8f8f2;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+
+        /* TIP */
+
+        .tip {
+            background: #fff7d6;
+            border-left: 5px solid #f0c000;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+
+        /* EXAMPLE */
+
+        .example {
+            background: #eef6ff;
+            border: 2px solid #306998;
+        }
+
+
+        /* PASS / FAIL */
+
+        .pass-box {
+            background: #e8f8ee;
+            border-left: 6px solid #28a745;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .fail-box {
+            background: #fff0f0;
+            border-left: 6px solid #dc3545;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+
+        /* PRACTICE */
+
+        .practice {
+            background: #eef6ff;
+            border: 2px solid #306998;
+        }
+
+
+        /* QUIZ */
+
+        .question {
+            background: #f4f7fb;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 10px;
+        }
+
+        .question label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+
+        button {
+            background: #306998;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #1f4f7a;
+        }
+
+
+        /* QUIZ RESULT */
+
+        .score-box {
+            background: #306998;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+
+        .correct-answer {
+            background: #e8f8ee;
+            border-left: 6px solid #28a745;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .correct-answer h3 {
+            color: #198754;
+        }
+
+
+        .wrong-answer {
+            background: #fff0f0;
+            border-left: 6px solid #dc3545;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .wrong-answer h3 {
+            color: #dc3545;
+        }
+
+
+        .correct-answer p,
+        .wrong-answer p {
+            margin: 7px 0;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            background: #173b5c;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <h1>🐍 Weekend 4</h1>
+
+    <p>
+        Conditions – Python நிபந்தனைகள்
+    </p>
+
+</header>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <a href="#conditions">Conditions</a>
+
+    <a href="#ifelse">If & Else</a>
+
+    <a href="#passfail">Pass / Fail</a>
+
+    <a href="#practice">Practice</a>
+
+    <a href="#quiz">Quiz</a>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- ================= INTRO ================= -->
+
+<section class="card">
+
+    <h2>🎯 Weekend 4 – என்ன கற்கப் போகிறோம்?</h2>
+
+    <p>
+        இந்த வாரத்தில் Python-ல் ஒரு condition
+        உண்மையா அல்லது பொய்யா என்பதை சரிபார்த்து,
+        அதற்கேற்ப வெவ்வேறு code-ஐ இயக்க கற்றுக்கொள்வோம்.
+    </p>
+
+    <ul>
+
+        <li>🔹 Condition என்றால் என்ன?</li>
+
+        <li>🔹 if statement</li>
+
+        <li>🔹 else statement</li>
+
+        <li>🔹 Comparison operators</li>
+
+        <li>🔹 Pass / Fail Program</li>
+
+        <li>🔹 Practice</li>
+
+        <li>🔹 Quiz</li>
+
+    </ul>
+
+</section>
+
+
+<!-- ================= CONDITIONS ================= -->
+
+<section class="card" id="conditions">
+
+    <h2>1️⃣ Condition என்றால் என்ன?</h2>
+
+    <p>
+        ஒரு குறிப்பிட்ட நிபந்தனை உண்மையா அல்லது
+        பொய்யா என்பதை Python சரிபார்ப்பதே
+        <b>Condition</b> ஆகும்.
+    </p>
+
+
+    <h3>📌 Example</h3>
+
+    <div class="code-box">age = 18
+
+if age >= 18:
+    print("நீங்கள் 18 அல்லது அதற்கு மேற்பட்டவர்")</div>
+
+
+    <div class="tip">
+
+        💡 இங்கே Python முதலில்
+        <b>age >= 18</b> என்பதை சரிபார்க்கிறது.
+
+        அது True என்றால் print() இயங்கும்.
+
+    </div>
+
+</section>
+
+
+<!-- ================= IF ================= -->
+
+<section class="card" id="ifelse">
+
+    <h2>2️⃣ if Statement</h2>
+
+    <p>
+        ஒரு condition True ஆக இருந்தால்
+        ஒரு குறிப்பிட்ட code-ஐ இயக்க
+        <b>if</b> பயன்படுத்தப்படுகிறது.
+    </p>
+
+
+    <h3>Example</h3>
+
+    <div class="code-box">number = 10
+
+if number > 5:
+    print("Number 5-ஐ விட பெரியது")</div>
+
+
+    <h3>🔍 Comparison Operators</h3>
+
+    <div class="code-box">==   சமம்
+!=   சமம் இல்லை
+>    பெரியது
+<    சிறியது
+>=   பெரியது அல்லது சமம்
+<=   சிறியது அல்லது சமம்</div>
+
+
+    <div class="tip">
+
+        ⚠️ Python-ல் condition முடிவில்
+        <b>:</b> (colon) போட வேண்டும்.
+
+    </div>
+
+</section>
+
+
+<!-- ================= ELSE ================= -->
+
+<section class="card">
+
+    <h2>3️⃣ else Statement</h2>
+
+    <p>
+        if condition False ஆக இருந்தால்
+        <b>else</b> பகுதி இயங்கும்.
+    </p>
+
+
+    <div class="code-box">age = 15
+
+if age >= 18:
+    print("Adult")
+else:
+    print("Not Adult")</div>
+
+
+    <p>
+        இங்கே age = 15 என்பதால் condition False.
+        அதனால் <b>else</b> இயங்கும்.
+    </p>
+
+</section>
+
+
+<!-- ================= PASS FAIL ================= -->
+
+<section class="card" id="passfail">
+
+    <h2>4️⃣ Pass / Fail Program</h2>
+
+    <p>
+        மாணவரின் மதிப்பெண்ணை input மூலம் பெற்று,
+        அவர் Pass அல்லது Fail என்பதை கண்டறியலாம்.
+    </p>
+
+
+    <h3>📌 Rule</h3>
+
+    <p>
+        <b>40 அல்லது அதற்கு மேல் → Pass</b>
+    </p>
+
+    <p>
+        <b>40-க்கு கீழ் → Fail</b>
+    </p>
+
+
+    <h3>💻 Python Program</h3>
+
+    <div class="code-box">marks = int(input("மதிப்பெண்: "))
+
+if marks >= 40:
+    print("Pass")
+else:
+    print("Fail")</div>
+
+
+    <div class="pass-box">
+
+        ✅ marks = 75
+
+        <br>
+
+        Result: <b>Pass</b>
+
+    </div>
+
+
+    <div class="fail-box">
+
+        ❌ marks = 25
+
+        <br>
+
+        Result: <b>Fail</b>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MORE EXAMPLES ================= -->
+
+<section class="card example">
+
+    <h2>5️⃣ இன்னும் சில Examples</h2>
+
+
+    <h3>Example 1 – Positive / Negative</h3>
+
+    <div class="code-box">number = int(input("ஒரு எண்ணை உள்ளிடுங்கள்: "))
+
+if number >= 0:
+    print("Positive Number")
+else:
+    print("Negative Number")</div>
+
+
+    <h3>Example 2 – Even / Odd</h3>
+
+    <div class="code-box">number = int(input("ஒரு எண்ணை உள்ளிடுங்கள்: "))
+
+if number % 2 == 0:
+    print("Even Number")
+else:
+    print("Odd Number")</div>
+
+
+    <h3>Example 3 – Voting Age</h3>
+
+    <div class="code-box">age = int(input("உங்கள் வயது: "))
+
+if age >= 18:
+    print("Vote செய்யலாம்")
+else:
+    print("Vote செய்ய முடியாது")</div>
+
+</section>
+
+
+<!-- ================= PRACTICE ================= -->
+
+<section class="card practice" id="practice">
+
+    <h2>✍️ Practice Questions</h2>
+
+
+    <h3>Question 1</h3>
+
+    <p>
+        ஒரு எண்ணை input மூலம் பெற்று,
+        அது 100-ஐ விட பெரியதா என்று கண்டறியும்
+        Python program எழுதுங்கள்.
+    </p>
+
+
+    <h3>Question 2</h3>
+
+    <p>
+        மாணவரின் மதிப்பெண்ணை பெற்று,
+        50 அல்லது அதற்கு மேல் இருந்தால் Pass,
+        இல்லையெனில் Fail என்று காட்டுங்கள்.
+    </p>
+
+
+    <h3>Question 3</h3>
+
+    <p>
+        ஒரு எண்ணை பெற்று அது Even அல்லது Odd
+        என்று கண்டறியுங்கள்.
+    </p>
+
+
+    <div class="tip">
+
+        💡 முதலில் நீங்களே program எழுத முயற்சி செய்யுங்கள்.
+
+    </div>
+
+</section>
+
+
+<!-- ================= QUIZ ================= -->
+
+<section class="card" id="quiz">
+
+    <h2>📝 Weekend 4 Quiz</h2>
+
+
+    <!-- QUESTION 1 -->
+
+    <div class="question">
+
+        <p>
+            <b>
+                1. Python-ல் condition சரிபார்க்க
+                எந்த statement பயன்படுத்தப்படுகிறது?
+            </b>
+        </p>
+
+
+        <label>
+            <input type="radio" name="q1" value="a">
+            print
+        </label>
+
+
+        <label>
+            <input type="radio" name="q1" value="b">
+            if
+        </label>
+
+
+        <label>
+            <input type="radio" name="q1" value="c">
+            input
+        </label>
+
+
+        <label>
+            <input type="radio" name="q1" value="d">
+            loop
+        </label>
+
+    </div>
+
+
+    <!-- QUESTION 2 -->
+
+    <div class="question">
+
+        <p>
+            <b>
+                2. if condition False ஆகும்போது
+                எந்த பகுதி இயங்கும்?
+            </b>
+        </p>
+
+
+        <label>
+            <input type="radio" name="q2" value="a">
+            if
+        </label>
+
+
+        <label>
+            <input type="radio" name="q2" value="b">
+            else
+        </label>
+
+
+        <label>
+            <input type="radio" name="q2" value="c">
+            print
+        </label>
+
+
+        <label>
+            <input type="radio" name="q2" value="d">
+            input
+        </label>
+
+    </div>
+
+
+    <!-- QUESTION 3 -->
+
+    <div class="question">
+
+        <p>
+            <b>
+                3. 50 மதிப்பெண் பெற்ற மாணவர்
+                Pass ஆவாரா?
+                Pass mark = 40
+            </b>
+        </p>
+
+
+        <label>
+            <input type="radio" name="q3" value="a">
+            Pass
+        </label>
+
+
+        <label>
+            <input type="radio" name="q3" value="b">
+            Fail
+        </label>
+
+
+        <label>
+            <input type="radio" name="q3" value="c">
+            Error
+        </label>
+
+
+        <label>
+            <input type="radio" name="q3" value="d">
+            None
+        </label>
+
+    </div>
+
+
+    <!-- QUESTION 4 -->
+
+    <div class="question">
+
+        <p>
+            <b>
+                4. 10 % 2 == 0 என்ற condition
+                என்ன சொல்கிறது?
+            </b>
+        </p>
+
+
+        <label>
+            <input type="radio" name="q4" value="a">
+            10 Odd
+        </label>
+
+
+        <label>
+            <input type="radio" name="q4" value="b">
+            10 Even
+        </label>
+
+
+        <label>
+            <input type="radio" name="q4" value="c">
+            10 Negative
+        </label>
+
+
+        <label>
+            <input type="radio" name="q4" value="d">
+            10 Zero
+        </label>
+
+    </div>
+
+
+    <!-- QUESTION 5 -->
+
+    <div class="question">
+
+        <p>
+            <b>
+                5. கீழே உள்ளதில் எது
+                "பெரியது அல்லது சமம்" என்பதை குறிக்கும்?
+            </b>
+        </p>
+
+
+        <label>
+            <input type="radio" name="q5" value="a">
+            >
+        </label>
+
+
+        <label>
+            <input type="radio" name="q5" value="b">
+            <
+        </label>
+
+
+        <label>
+            <input type="radio" name="q5" value="c">
+            >=
+        </label>
+
+
+        <label>
+            <input type="radio" name="q5" value="d">
+            ==
+        </label>
+
+    </div>
+
+
+    <button onclick="checkQuiz()">
+        ✅ Quiz முடிவை பார்க்க
+    </button>
+
+
+    <div id="quizResult"></div>
+
+</section>
+
+
+<!-- ================= MINI PROJECT ================= -->
+
+<section class="card practice">
+
+    <h2>🏆 Mini Project – Student Result Checker</h2>
+
+    <p>
+        ஒரு மாணவரின் மதிப்பெண்ணை input மூலம் பெற்று,
+        Pass அல்லது Fail என்பதை காட்டும் program உருவாக்குங்கள்.
+    </p>
+
+
+    <h3>Rule:</h3>
+
+    <ul>
+
+        <li>40 அல்லது அதற்கு மேல் → Pass</li>
+
+        <li>40-க்கு கீழ் → Fail</li>
+
+    </ul>
+
+
+    <h3>💻 Sample Code</h3>
+
+
+    <div class="code-box">marks = int(input("உங்கள் மதிப்பெண்: "))
+
+if marks >= 40:
+    print("🎉 நீங்கள் Pass!")
+else:
+    print("❌ நீங்கள் Fail!")
+
+</div>
+
+
+    <div class="tip">
+
+        🚀 Challenge:
+
+        <br>
+
+        75 அல்லது அதற்கு மேல் → Grade A
+
+        <br>
+
+        60–74 → Grade B
+
+        <br>
+
+        40–59 → Grade C
+
+        <br>
+
+        40-க்கு கீழ் → Fail
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        🐍 Python Learning – Weekend 4
+    </p>
+
+    <p>
+        Learn • Practice • Build 🚀
+    </p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function checkQuiz() {
+
+    let score = 0;
+
+
+    /* Correct Answers */
+
+    const answers = {
+
+        q1: "b",
+
+        q2: "b",
+
+        q3: "a",
+
+        q4: "b",
+
+        q5: "c"
+
+    };
+
+
+    /* Questions */
+
+    const questions = {
+
+        q1: "Python-ல் condition சரிபார்க்க எந்த statement பயன்படுத்தப்படுகிறது?",
+
+        q2: "if condition False ஆகும்போது எந்த பகுதி இயங்கும்?",
+
+        q3: "50 மதிப்பெண் பெற்ற மாணவர் Pass ஆவாரா? Pass mark = 40",
+
+        q4: "10 % 2 == 0 என்ற condition என்ன சொல்கிறது?",
+
+        q5: "பெரியது அல்லது சமம் என்பதை குறிக்கும் operator எது?"
+
+    };
+
+
+    /* Correct Answer Text */
+
+    const correctAnswers = {
+
+        q1: "if",
+
+        q2: "else",
+
+        q3: "Pass",
+
+        q4: "10 Even",
+
+        q5: ">="
+
+    };
+
+
+    let resultHTML = "";
+
+
+    /* Check All Questions */
+
+    for (let i = 1; i <= 5; i++) {
+
+        let questionName = "q" + i;
+
+
+        let selected = document.querySelector(
+            'input[name="' + questionName + '"]:checked'
+        );
+
+
+        /* No Answer */
+
+        if (!selected) {
+
+            resultHTML += `
+
+                <div class="wrong-answer">
+
+                    <h3>
+                        ⚠️ கேள்வி ${i} – பதில் தேர்வு செய்யவில்லை!
+                    </h3>
+
+                    <p>
+                        <b>கேள்வி:</b>
+                        ${questions[questionName]}
+                    </p>
+
+                    <p>
+                        <b>✅ சரியான பதில்:</b>
+                        ${correctAnswers[questionName]}
+                    </p>
+
+                </div>
+
+            `;
+
+            continue;
+        }
+
+
+        /* Correct */
+
+        if (selected.value === answers[questionName]) {
+
+            score++;
+
+
+            resultHTML += `
+
+                <div class="correct-answer">
+
+                    <h3>
+                        ✅ கேள்வி ${i} – சரி!
+                    </h3>
+
+                    <p>
+                        <b>கேள்வி:</b>
+                        ${questions[questionName]}
+                    </p>
+
+                    <p>
+                        <b>உங்கள் பதில்:</b>
+                        ${selected.parentElement.textContent.trim()}
+                    </p>
+
+                    <p>
+                        🎉 சரியான பதில்!
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* Wrong */
+
+        else {
+
+            resultHTML += `
+
+                <div class="wrong-answer">
+
+                    <h3>
+                        ❌ கேள்வி ${i} – தவறு!
+                    </h3>
+
+                    <p>
+                        <b>கேள்வி:</b>
+                        ${questions[questionName]}
+                    </p>
+
+                    <p>
+                        <b>உங்கள் பதில்:</b>
+                        ${selected.parentElement.textContent.trim()}
+                    </p>
+
+                    <p>
+                        <b>✅ சரியான பதில்:</b>
+                        ${correctAnswers[questionName]}
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+
+    /* Final Score */
+
+    let message = "";
+
+
+    if (score === 5) {
+
+        message = "🏆 Excellent! அனைத்து கேள்விகளும் சரி!";
+
+    }
+
+    else if (score >= 3) {
+
+        message = "👍 நல்ல முயற்சி! இன்னும் கொஞ்சம் practice செய்யுங்கள்.";
+
+    }
+
+    else {
+
+        message = "📚 Lesson-ஐ மீண்டும் படித்து முயற்சி செய்யுங்கள்.";
+
+    }
+
+
+    document.getElementById("quizResult").innerHTML = `
+
+        <div class="score-box">
+
+            🎯 உங்கள் மதிப்பெண்: ${score} / 5
+
+            <br><br>
+
+            ${message}
+
+        </div>
+
+
+        <h2>
+            📋 Quiz Review
+        </h2>
+
+
+        ${resultHTML}
+
+    `;
+
+
+    /* Scroll to Result */
+
+    document.getElementById("quizResult").scrollIntoView({
+
+        behavior: "smooth"
+
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+```
